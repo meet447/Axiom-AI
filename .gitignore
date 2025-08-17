@@ -1,0 +1,12 @@
+frontend/node_modules
+frontend/.next
+frontend/.swc
+frontend/.next/
+frontend/.swc/
+.next/
+*.DS_Store
+*.pyc
+backend/test.py
+backend/test2.py
+*.env
+test.json

@@ -1,0 +1,7 @@
+fastapi
+pydantic
+uvicorn
+ddgs
+bs4
+curl_cffi
+google-genai
