@@ -1,4 +1,5 @@
 # Axiom-AI
+<img width="1377" height="733" alt="image" src="https://github.com/user-attachments/assets/2664b465-e580-44ca-97c2-e9928c6ee494" />
 
 A modern AI-powered chat application built with FastAPI backend and Next.js frontend, featuring multiple AI models and advanced search capabilities.
 
