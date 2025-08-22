@@ -5,3 +5,4 @@ ddgs
 bs4
 curl_cffi
 google-genai
+openai
