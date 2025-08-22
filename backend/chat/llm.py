@@ -1,25 +1,53 @@
 import json
 from typing import AsyncGenerator
 from google import genai
-from config import GEMINI_API_KEY
-     
+from config import GEMINI_API_KEY, UNIO_API_KEY
+import openai 
+
+# async def chat_with_model(
+#     message: str,
+#     model: str = 'gemini-2.5-flash-lite',
+# ) -> AsyncGenerator[str, None]:
+    
+    
+#     client = genai.Client(api_key=GEMINI_API_KEY)
+    
+#     response = client.models.generate_content_stream(
+#         model=model,
+#         contents=message,
+#     )
+    
+#     for chunk in response:
+#         yield f'data: {json.dumps({"event": "text-chunk", "data": {"text": chunk.text}})}'
+    
+#     yield "data: DONE"
+#     return
+
+
 async def chat_with_model(
     message: str,
-    model: str = 'gemini-2.5-flash-lite',
+    model: str = 'google:gemini-2.0-flash-lite',
 ) -> AsyncGenerator[str, None]:
     
     
-    client = genai.Client(api_key=GEMINI_API_KEY)
+    unio = openai.Client(
+        base_url="https://unio.onrender.com/v1/api",
+        api_key="rk_f112c370d4b0f82940d9a4274e9b0b78e547a904af65e933577b825a7b8f3ebd"
+    )
     
-    response = client.models.generate_content_stream(
-        model=model,
-        contents=message,
+    messages = [
+        {"role": "user", "content": message}
+    ]
+    
+    response = unio.chat.completions.create(
+        model="google:" + model,
+        messages=messages,
+        stream=True
     )
     
     for chunk in response:
-        yield f'data: {json.dumps({"event": "text-chunk", "data": {"text": chunk.text}})}'
+        yield f'data: {json.dumps({"event": "text-chunk", "data": {"text": chunk.choices[0].delta.content or ""}})}'
     
     yield "data: DONE"
     return
-
     

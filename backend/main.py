@@ -35,7 +35,7 @@ async def chat_endpoint(payload: ChatRequest):
         'powerful': 'gemini-2.5-pro',
         'hyper': 'gemini-2.5-flash-lite'
     }
-
+    
     model = model_map.get(payload.model)
     if not model:
         raise HTTPException(status_code=400, detail="Unsupported model")
