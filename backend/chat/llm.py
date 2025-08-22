@@ -4,6 +4,7 @@ from google import genai
 from config import GEMINI_API_KEY, UNIO_API_KEY
 import openai 
 
+#uncomment if you want to use google  genai
 # async def chat_with_model(
 #     message: str,
 #     model: str = 'gemini-2.5-flash-lite',
